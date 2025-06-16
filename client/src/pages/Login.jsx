@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'; 
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -26,6 +27,13 @@ const Login = () => {
     <div className="w-full max-w-sm mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
       <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
+        <p className="text-sm text-center mt-4">
+  Don't have an account?{' '}
+  <Link to="/signup" className="text-blue-500 hover:underline">
+    Sign up
+  </Link>
+</p>
+
         <input
           name="email"
           type="email"
@@ -49,6 +57,8 @@ const Login = () => {
           Login
         </button>
       </form>
+      
+      
     </div>
   );
 };
