@@ -1,36 +1,28 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
 import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
-
+import moodRoutes from './routes/moodRoutes.js';
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express(); // ✅ Make sure this comes BEFORE any app.use
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/mental_health_tracker', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ MongoDB connected'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
-
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// ✅ Define routes after app is created
 app.use('/api/auth', authRoutes);
+app.use('/api/moods', moodRoutes);
 
-// Root route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+// ✅ DB & Server connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    app.listen(5000, () => {
+      console.log('🚀 Server running on http://localhost:5000');
+    });
+  })
+  .catch((err) => console.error('MongoDB error:', err));

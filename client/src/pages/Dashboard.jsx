@@ -1,14 +1,18 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-      <h2 className="text-3xl font-bold mb-4">Welcome, {user?.name || 'User'} 👋</h2>
-      <p>This is your mental health dashboard.</p>
-
-      {/* Later: Add mood journaling, chart, and AI summary */}
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar />
+      <div className="flex flex-col flex-1">
+        <Navbar />
+        <main className="p-6 overflow-y-auto">
+          <Outlet /> {/* This will load sub-pages like MoodEntry, Charts, etc */}
+        </main>
+      </div>
     </div>
   );
 };
