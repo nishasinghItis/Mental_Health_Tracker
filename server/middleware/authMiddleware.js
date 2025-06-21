@@ -1,19 +1,30 @@
+// server/middleware/authMiddleware.js
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 
-const authMiddleware = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer '))
-    return res.status(401).json({ message: 'No token' });
+const JWT_SECRET = process.env.JWT_SECRET || 'yourVerySecretKey123';
 
-  const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, 'yourVerySecretKey123');
-    req.user = await User.findById(decoded.id).select('-password');
-    next();
-  } catch (error) {
-    res.status(401).json({ message: 'Token invalid' });
-  }
+export const protect = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Unauthorized: No token' });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user) {
+      return res.status(401).json({ message: 'Unauthorized: User not found' });
+    }
+
+    req.user = user; // attach full user document to request
+    next();
+  } catch (err) {
+    console.error(err);
+    res.status(401).json({ message: 'Unauthorized: Invalid token' });
+  }
 };
-
-export default authMiddleware;

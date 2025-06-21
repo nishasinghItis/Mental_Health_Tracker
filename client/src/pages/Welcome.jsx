@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import WelcomeBanner from '../components/WelcomeBanner';
+import RecentMoodFeed from '../components/RecentMoodFeed';
+import FAQSection from '../components/FAQSection';
+import ThemeCustomizer from '../components/Themecustomizer';
+import { AuthContext } from '../context/AuthContext';
 
 const Welcome = () => {
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">Welcome to Your Mental Health Dashboard</h1>
-      <p className="mt-2 text-gray-600">Track your moods, talk with AI, and monitor your progress daily.</p>
-    </div>
-  );
+  const { user } = useContext(AuthContext);
+
+  return (
+    <div className="space-y-10 px-4 py-6 md:px-8">
+      <WelcomeBanner name={user?.name || 'User'} />
+      <RecentMoodFeed />
+      <FAQSection />
+      <ThemeCustomizer />
+    </div>
+  );
 };
 
 export default Welcome;

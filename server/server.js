@@ -7,22 +7,22 @@ import moodRoutes from './routes/moodRoutes.js';
 
 dotenv.config();
 
-const app = express(); // ✅ Make sure this comes BEFORE any app.use
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// ✅ Define routes after app is created
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/moods', moodRoutes);
 
-// ✅ DB & Server connection
+// MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('✅ MongoDB connected');
-    app.listen(5000, () => {
-      console.log('🚀 Server running on http://localhost:5000');
-    });
-  })
-  .catch((err) => console.error('MongoDB error:', err));
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    app.listen(5000, () => {
+      console.log('🚀 Server running at http://localhost:5000');
+    });
+  })
+  .catch((err) => console.error('MongoDB connection error:', err));

@@ -1,38 +1,23 @@
-import { Link, useLocation } from 'react-router-dom';
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
-  const { pathname } = useLocation();
+  const linkClass = ({ isActive }) =>
+    `block py-2.5 px-4 rounded-lg text-sm font-medium transition ${
+      isActive ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-blue-100'
+    }`;
 
-  const navItems = [
-    { label: 'Dashboard', path: '/dashboard' },
-    { label: 'New Mood Entry', path: '/dashboard/entry' },
-    { label: 'Progress Charts', path: '/dashboard/charts' },
-    { label: 'AI Chat Support', path: '/dashboard/chat' },
-    { label: 'Consultation', path: '/dashboard/consultation' },
-  ];
-
-  return (
-    <div className="w-64 bg-white shadow-md h-full px-4 py-8">
-      <h2 className="text-xl font-semibold text-gray-800 mb-6">Mental Health Tracker</h2>
-      <ul className="space-y-4">
-        {navItems.map((item) => (
-          <li key={item.path}>
-            <Link
-              to={item.path}
-              className={`block p-2 rounded-lg transition ${
-                pathname === item.path
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-700 hover:bg-blue-100'
-              }`}
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return (
+    <aside className="w-64 bg-white shadow-lg p-4 h-full">
+      <h2 className="text-xl font-bold mb-6">Your Dashboard</h2>
+      <nav className="space-y-2">
+        <NavLink to="/dashboard" end className={linkClass}>Dashboard</NavLink>
+<NavLink to="/dashboard/entry" className={linkClass}>New Mood Entry</NavLink>
+        <NavLink to="/dashboard/charts" className={linkClass}>Progress Charts</NavLink>
+        <NavLink to="/dashboard/chat" className={linkClass}>AI Chat Support</NavLink>
+        <NavLink to="/dashboard/consultation" className={linkClass}>Consultation</NavLink>
+      </nav>
+    </aside>
+  );
 };
 
 export default Sidebar;
