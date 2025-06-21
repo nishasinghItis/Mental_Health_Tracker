@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const themes = [
   { name: "Default", color: "from-indigo-300 to-purple-300" },
@@ -9,14 +9,7 @@ const themes = [
 ];
 
 const ThemeCustomizer = () => {
-  const [selected, setSelected] = useState(localStorage.getItem("theme") || themes[0].color);
-  const [darkMode, setDarkMode] = useState(localStorage.getItem("dark") === "true");
-
-  useEffect(() => {
-    document.body.classList.toggle("dark", darkMode);
-    localStorage.setItem("dark", darkMode);
-    localStorage.setItem("theme", selected);
-  }, [darkMode, selected]);
+  const { theme, setTheme, darkMode, setDarkMode } = useTheme();
 
   return (
     <div className="mt-8">
@@ -35,15 +28,13 @@ const ThemeCustomizer = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {themes.map((theme) => (
+        {themes.map((t) => (
           <div
-            key={theme.name}
-            className={`p-4 rounded-xl text-center text-sm font-medium cursor-pointer shadow ${
-              selected === theme.color ? 'ring-2 ring-purple-600' : ''
-            } bg-gradient-to-r ${theme.color}`}
-            onClick={() => setSelected(theme.color)}
+            key={t.name}
+            className={`p-4 rounded-xl text-center text-sm font-medium cursor-pointer shadow ${theme === t.color ? 'ring-2 ring-purple-600' : ''} bg-gradient-to-r ${t.color}`}
+            onClick={() => setTheme(t.color)}
           >
-            {theme.name}
+            {t.name}
           </div>
         ))}
       </div>

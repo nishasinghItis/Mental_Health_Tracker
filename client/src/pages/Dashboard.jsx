@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import { Outlet } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 
 const Dashboard = () => {
-  return (
-    <div className="flex h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+  const { theme, darkMode } = useTheme();
 
-      <Sidebar />
-      <div className="flex flex-col flex-1">
-        <Navbar />
-        <main className="flex-1 p-6 overflow-y-auto bg-gray-50 dark:bg-gray-900">
+  return (
+    <div className="flex h-screen">
+      <div className={`flex flex-1 bg-gradient-to-r ${theme} transition-all duration-500`}>
+        <Sidebar />
+        <div className="flex flex-col flex-1 bg-transparent dark:bg-gray-900 ...">
 
-          <Outlet /> {/* This will load sub-pages like MoodEntry, Charts, etc */}
-        </main>
-      </div>
-    </div>
-  );
+          <Navbar />
+          <main className="p-6 overflow-y-auto text-gray-800 dark:text-gray-100">
+            <Outlet />
+          </main>
+        </div>
+      </div>
+    </div>
+  );
 };
+
 
 export default Dashboard;
