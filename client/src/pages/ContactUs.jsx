@@ -24,7 +24,7 @@ const ContactUs = () => {
       const res = await axios.post('http://localhost:5000/api/contact', formData);
       setResponseMsg('✅ Message sent successfully!');
       setFormData({ name: '', email: '',subject: '', message: '' });
-console.log(res.data.message);
+
     } catch (err) {
       console.error(err);
       setResponseMsg('❌ Failed to send. Try again later.');
@@ -92,7 +92,7 @@ console.log(res.data.message);
           <Mail className="w-4 h-4" /> support@talkspace.com
         </p>
         <p className="flex items-center gap-2 mt-1">
-          <Phone className="w-4 h-4" /> +91-8760581168
+          <Phone className="w-4 h-4" /> +91-8760591188
         </p>
       </div>
     </div>

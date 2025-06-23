@@ -26,7 +26,7 @@ app.use('/api/consultation', consultationRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/contact', contactRoutes);
 // Debug: Environment key check (Optional)
-console.log("✅ Loaded Openrouter Key:", process.env.OPENROUTER_API_KEY);
+
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)

@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST /api/contact
 router.post('/', async (req, res) => {
-   console.log('Incoming contact form data:', req.body); 
+  
   const { name, email, subject, message } = req.body;
 
   if (!name || !email || !subject || !message) {

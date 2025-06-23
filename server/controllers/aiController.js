@@ -25,9 +25,8 @@ export const handleAIChat = async (req, res) => {
 
     const aiReply = response.choices[0].message.content.trim();
     res.status(200).json({ reply: aiReply });
-    console.log("Received messages:", messages);
-console.log("Sending to OpenAI:", formattedMessages);
-console.log("OPENAI_API_KEY Present?", !!process.env.OPENAI_API_KEY);
+    
+
 
   } catch (err) {
     console.error('AI Error:', err.response?.data || err.message);

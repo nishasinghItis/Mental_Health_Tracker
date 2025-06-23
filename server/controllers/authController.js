@@ -41,13 +41,11 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    console.log('✅ User found:', user);
-    console.log('🔑 Entered password:', password);
-    console.log('🧂 Stored hash:', user.password);
+
 
     const isMatch = await bcrypt.compare(password, user.password);
 
-     console.log('🔁 Password match result:', isMatch);
+    
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
@@ -64,7 +62,7 @@ export const loginUser = async (req, res) => {
       },
     });
 
-    console.log('✅ Login successful for:', email);
+   
 
   } catch (err) {
     console.error(err);

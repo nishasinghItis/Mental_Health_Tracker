@@ -22,7 +22,7 @@ const Signup = () => {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/register', formData);
       setMessage(res.data.message || 'Registration successful');
-      console.log('✅ Registered:', res.data);
+     
     } catch (err) {
       console.error('❌ Register error:', err.response?.data || err.message);
       setMessage(err.response?.data?.message || 'Something went wrong');
