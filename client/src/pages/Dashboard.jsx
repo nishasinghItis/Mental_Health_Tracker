@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import Footer from '../components/Footer';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useAuthContext } from '../context/AuthContext';
@@ -25,6 +26,7 @@ const Dashboard = () => {
           <main className="p-6 overflow-y-auto text-gray-800 dark:text-gray-100">
             <Outlet />
           </main>
+<Footer />
         </div>
       </div>
     </div>
