@@ -8,7 +8,8 @@ import authRoutes from './routes/authRoutes.js';
 import moodRoutes from './routes/moodRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
 import consultationRoutes from './routes/consultationRoutes.js';
-
+import userRoutes from './routes/userRoutes.js';
+import contactRoutes from './routes/contactRoutes.js'
 const app = express();
 
 // Middleware
@@ -20,7 +21,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/moods', moodRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/consultation', consultationRoutes);
-
+app.use('/api/users', userRoutes);
+app.use('/api/contact', contactRoutes);
 // Debug: Environment key check (Optional)
 console.log("✅ Loaded Openrouter Key:", process.env.OPENROUTER_API_KEY);
 

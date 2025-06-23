@@ -11,7 +11,9 @@ import NewMoodEntry from './pages/NewMoodEntry';
 import ProgressCharts from './pages/ProgressCharts';
 import AIChatSupport from './pages/AIChatSupport';
 import Consultation from './pages/Consultation';
+import Profile from './pages/Profile';
 
+import ContactUs from './pages/ContactUs';
 function App() {
   return (
     <Routes>
@@ -33,6 +35,8 @@ function App() {
         <Route path="charts" element={<ProgressCharts />} /> {/* /dashboard/charts */}
         <Route path="chat" element={<AIChatSupport />} /> {/* /dashboard/chat */}
         <Route path="consultation" element={<Consultation />} /> {/* /dashboard/consultation */}
+<Route path="profile" element={<Profile />} />
+<Route path="contact" element={<ContactUs />} />
       </Route>
     </Routes>
   );
