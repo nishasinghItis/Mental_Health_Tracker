@@ -5,17 +5,18 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}", // important: tells Tailwind to scan all your files
   ],
-  darkMode: 'class', // enables dark mode with a "dark" class
+  darkMode: false, // enables dark mode with a "dark" class
   theme: {
     extend: {
       colors: {
         mood: {
-          calm: '#a2d2ff',       // light blue
-          happy: '#ffe066',      // yellow
-          anxious: '#ffc9de',    // pink
-          neutral: '#f5f5f5',    // gray
-          sad: '#c1d3fe',        // faded blue
-          darkBg: '#1f2937',     // dark mode background
+          
+        primary: '#4B5563',       // gray-700 - for text, nav, etc.
+        secondary: '#9CA3AF',     // gray-400 - for subtle elements
+        background: '#F9FAFB',    // gray-50  - for page background
+        accent: '#E5E7EB',        // gray-200 - for cards, buttons
+        darkBg: '#1F2937',        // dark background (unchanged)
+        darkText: '#E5E7EB',      // light text for dark mode
         },
       },
     },

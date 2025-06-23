@@ -40,7 +40,7 @@ const RecentMoodFeed = () => {
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm">
       <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
-        📝 Recent Mood Entries
+        Your Past Journey
       </h3>
 
       {moods.length === 0 ? (

@@ -89,10 +89,10 @@ console.log(res.data.message);
 
       <div className="mt-10 text-sm">
         <p className="flex items-center gap-2">
-          <Mail className="w-4 h-4" /> support@mindtrack.com
+          <Mail className="w-4 h-4" /> support@talkspace.com
         </p>
         <p className="flex items-center gap-2 mt-1">
-          <Phone className="w-4 h-4" /> +91-9876543210
+          <Phone className="w-4 h-4" /> +91-8760581168
         </p>
       </div>
     </div>

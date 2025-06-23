@@ -6,15 +6,15 @@ import App from './App.jsx';
 import './index.css';
 
 import { AuthContextProvider } from './context/AuthContext.jsx';
-import { ThemeProvider } from './context/ThemeContext.jsx'; // ✅ Import ThemeContext
+ // ✅ Import ThemeContext
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <ThemeProvider> {/* ✅ Wrap ThemeProvider inside AuthProvider */}
+         {/* ✅ Wrap ThemeProvider inside AuthProvider */}
           <App />
-        </ThemeProvider>
+        
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -19,9 +19,9 @@ const WelcomeBanner = ({ name = "User" }) => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-600 dark:to-purple-700 p-6 rounded-2xl shadow-md text-white my-6">
-      <h2 className="text-2xl font-bold mb-2">Welcome back, {name.split(" ")[0]} 👋</h2>
-      <p className="text-lg italic">{quote}</p>
+    <div className="bg-gradient-to-r from-indigo-400 to-purple-300 dark:from-indigo-600 dark:to-purple-700 p-6 rounded-2xl shadow-md text-white my-6">
+      <h2 className="text-xl font-semibold mb-2">Welcome back, {name.split(" ")[0]} 🌻</h2>
+      <p className="text-sm italic">{quote}</p>
     </div>
   );
 };

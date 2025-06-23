@@ -29,7 +29,7 @@ const FAQSection = () => {
 
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-semibold mb-4">❓ FAQs</h3>
+      <h3 className="text-xl font-semibold mb-4">FAQ</h3>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div
@@ -42,7 +42,7 @@ const FAQSection = () => {
               <span className="text-purple-500">{openIndex === index ? '−' : '+'}</span>
             </div>
             {openIndex === index && (
-              <p className="text-gray-600 dark:text-gray-300 mt-2">{faq.answer}</p>
+              <p className="text-gray-600 dark:text-gray-300 mt-3">{faq.answer}</p>
             )}
           </div>
         ))}
