@@ -24,7 +24,6 @@ export const createMoodEntry = async (req, res) => {
       mood,
       note,
       date,
-      date,
       intensity,
       activities,
       duration,
@@ -32,7 +31,6 @@ export const createMoodEntry = async (req, res) => {
       trigger,
       coping,
       intention,
-     
     });
 
     await newEntry.save();
