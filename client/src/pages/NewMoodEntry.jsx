@@ -53,7 +53,7 @@ const NewMoodEntry = () => {
       console.log('Sending form data:', formData);
 
       await axios.post(
-        'http://localhost:5000/api/moods',
+        `${import.meta.env.VITE_API_URL}/api/moods`,
         {
           mood: formData.mood,
           note: formData.thoughts,
